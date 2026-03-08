@@ -1,3 +1,4 @@
+import {clientId, clientSecret} from './config.ts'
 import {Endpoint} from './constants.ts'
 
 export interface TokenSuccessResponse {
@@ -13,12 +14,8 @@ export interface TokenSuccessResponse {
 }
 
 const config = {
-  /* fetch from openapi platform */
-  accessKey: 'havqsnpqefpgffqsxkqv',
-  /* fetch from openapi platform */
-  secretKey: '25b304a7554d478b8180f0d335a4bfda',
-  /* Interface example device_ID */
-  deviceId: '',
+  accessKey: clientId,
+  secretKey: clientSecret,
 }
 
 const enc = new TextEncoder()
