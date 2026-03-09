@@ -1,10 +1,14 @@
 import {test} from 'node:test'
 import {clientId, clientSecret} from './config.ts'
 import {Endpoint} from './constants.ts'
-import {getToken, signRequest} from './lib.ts'
-import type {SuccessResponse} from './types.ts'
+import {getToken} from './tuya/auth.ts'
+import type {SuccessResponse} from './tuya/types.ts'
+import {signRequest} from './tuya/utils.ts'
 
-const token = await getToken()
+const token = await getToken({
+  clientId: clientId,
+  clientSecret: clientSecret,
+})
 const devPlug = process.env.DEV_1!
 const devLight = process.env.DEV_2!
 
@@ -96,7 +100,7 @@ test('Test 961325', async (t) => {
   console.dir(
     await sendCommands(devPlug, {
       commands: [
-        {code: 'switch_1', value:  false},
+        {code: 'switch_1', value: false},
       ],
     }),
     {depth: null},
