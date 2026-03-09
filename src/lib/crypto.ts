@@ -11,7 +11,7 @@ export async function hmacSha256(data: string, secret: string): Promise<string> 
     ['sign'],
   )
   const signature = await crypto.subtle.sign('HMAC', cryptoKey, dataBuffer)
-  return new Uint8Array(signature).toHex().toUpperCase()
+  return new Uint8Array(signature).toHex()
 }
 
 export async function sha256(message: string): Promise<string> {

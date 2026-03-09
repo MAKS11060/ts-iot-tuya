@@ -22,7 +22,7 @@ export const signRequest = async (request: Request, options: {
   const sign = await hmacSha256(signStr, options.clientSecret)
 
   request.headers.set('t', timestamp)
-  request.headers.set('sign', sign)
+  request.headers.set('sign', sign.toUpperCase())
   request.headers.set('sign_method', 'HMAC-SHA256')
   request.headers.set('client_id', options.clientId)
   // optional for /token
